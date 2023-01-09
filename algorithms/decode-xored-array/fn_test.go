@@ -15,7 +15,22 @@ func Test_decode(t *testing.T) {
 		args args
 		want []int
 	}{
-		// TODO: Add test cases.
+		{
+			name: "1",
+			args: args{
+				encoded: []int{1, 2, 3},
+				first:   1,
+			},
+			want: []int{1, 0, 2, 1},
+		},
+		{
+			name: "2",
+			args: args{
+				encoded: []int{6, 2, 7, 3},
+				first:   4,
+			},
+			want: []int{4, 2, 0, 7, 4},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
