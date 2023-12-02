@@ -1,16 +1,10 @@
 package divide_two_integers
 
 import (
-	"fmt"
 	"testing"
 )
 
 func Test_divide(t *testing.T) {
-	fmt.Println(3 << 0)
-	fmt.Println(3 << 1)
-	fmt.Println(3 << 2)
-	fmt.Println(1 << 2)
-
 	type args struct {
 		dividend int
 		divisor  int
@@ -32,8 +26,15 @@ func Test_divide(t *testing.T) {
 			args: struct {
 				dividend int
 				divisor  int
-			}{dividend: -7, divisor: -3},
+			}{dividend: 7, divisor: -3},
 			want: -2,
+		},
+		{
+			args: struct {
+				dividend int
+				divisor  int
+			}{dividend: -2147483648, divisor: 1},
+			want: -2147483648,
 		},
 	}
 	for _, tt := range tests {
