@@ -1,12 +1,8 @@
 package divide_two_integers
 
-import (
-	"math"
-)
-
 var (
-	maximum = math.Pow(float64(2), float64(31)) - 1
-	minimum = math.Pow(float64(-2), float64(31)) - 1
+	maximum = 1<<31 - 1
+	minimum = -1 << 31
 )
 
 // divide is 29. Divide Two Integers
@@ -31,15 +27,17 @@ func divide(dividend, divisor int) int {
 		dividend -= divisor << (shifts - 1)
 	}
 
-	if quotient > int(maximum) {
-		quotient = int(maximum)
+	result := sign * quotient
+
+	if result > maximum {
+		result = maximum
 	}
 
-	if quotient < int(minimum) {
-		quotient = int(minimum)
+	if result < minimum {
+		result = minimum
 	}
 
-	return sign * quotient
+	return result
 }
 
 func abs(num int) int {
